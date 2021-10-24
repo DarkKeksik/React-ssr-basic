@@ -8,9 +8,9 @@
   "license": "MIT",
   "scripts": {
     "build:prod":"cross-env BUILD_TARGET=client BUILD_TYPE=prod npm run build:client & cross-env BUILD_TARGET=server npm run build:server",
-    "build:dev":"cross-env BUILD_TARGET=client BUILD_TYPE=dev npm run build:client & cross-env BUILD_TARGET=server npm run build:server",
-    "build:client": "cross-env BUILD_TARGET=client webpack --config webpackConfs/webpack.client.js ",
-    "build:server": "cross-env BUILD_TARGET=server webpack --config webpackConfs/webpack.server.js",
+    "build:dev":" cross-env BUILD_TARGET=client BUILD_TYPE=dev  npm run build:client & cross-env BUILD_TARGET=server npm run build:server",
+    "build:client": "cross-env BUILD_TYPE=dev cross-env BUILD_TARGET=client webpack --config webpackConfs/webpack.client.js ",
+    "build:server": "cross-env BUILD_TYPE=dev cross-env BUILD_TARGET=server webpack --config webpackConfs/webpack.server.js",
     "start:server": "nodemon dist/server/main.js"
   },
   "devDependencies": {
