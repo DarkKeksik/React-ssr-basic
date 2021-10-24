@@ -1,9 +1,7 @@
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const config = require('./webpack.common').createConfig({
-    target: 'client'
-});
+const config = require('./webpack.common').createConfig();
 
 module.exports = {
     ...config,

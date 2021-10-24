@@ -1,19 +1,22 @@
 const webpack = require('webpack');
-const { join } = require('path');
+const { resolve } = require('path');
 
-const createConfig = ({ target }) => {
-    const PATH_SRC = join(__dirname, "../");
-    const PATH_DIST = join(PATH_SRC, "dist", target);
-    const IS_SERVER = process.env.BUILD_TYPE === "server";
-    const IS_CLIENT = process.env.BUILD_TYPE === "client";
+const createConfig = () => {
+    const BUILD_TARGET = process.env.BUILD_TARGET;
+    const BUILD_TYPE = process.env.BUILD_TYPE;
+    const PATH_SRC = resolve(__dirname, "../");
+    const PATH_DIST = resolve(PATH_SRC, "dist", BUILD_TARGET);
+    const IS_SERVER = BUILD_TARGET === "server";
+    const IS_DEV = BUILD_TYPE === "dev";
 
     return {
-        name: target,
-        entry: join(PATH_SRC, target),
+        name: IS_SERVER ? "server" : "client",
+        entry: resolve(PATH_SRC, BUILD_TARGET),
+        target: IS_SERVER ? "node" : "web",
         mode: "development",
         output: {
             path: PATH_DIST,
-            filename: '[name].js'
+            filename: IS_DEV ? '[name].js' : '[name].[hash].js'
         },
         resolve: {
             modules: [

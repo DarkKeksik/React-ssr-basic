@@ -1,6 +1,4 @@
-const config = require('./webpack.common').createConfig({
-    target: 'server'
-});
+const config = require('./webpack.common').createConfig();
 
 module.exports = {
     ...config,

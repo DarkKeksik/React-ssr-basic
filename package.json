@@ -7,11 +7,11 @@
   "author": "Ilya Sychevskiy <i_sychevskii@flo.health>",
   "license": "MIT",
   "scripts": {
-    "build": "cross-env BUILD_TYPE=client npm run build:client & cross-env BUILD_TYPE=server npm run build:server",
-    "build:client": "cross-env BUILD_TYPE=client webpack --config webpackConfs/webpack.client.js ",
-    "build:server": "cross-env BUILD_TYPE=server webpack --config webpackConfs/webpack.server.js",
-    "start:server": "nodemon dist/server/main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:prod":"cross-env BUILD_TARGET=client BUILD_TYPE=prod npm run build:client & cross-env BUILD_TARGET=server npm run build:server",
+    "build:dev":"cross-env BUILD_TARGET=client BUILD_TYPE=dev npm run build:client & cross-env BUILD_TARGET=server npm run build:server",
+    "build:client": "cross-env BUILD_TARGET=client webpack --config webpackConfs/webpack.client.js ",
+    "build:server": "cross-env BUILD_TARGET=server webpack --config webpackConfs/webpack.server.js",
+    "start:server": "nodemon dist/server/main.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.11",
