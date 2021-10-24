@@ -4,8 +4,8 @@ const { join } = require('path');
 const createConfig = ({ target }) => {
     const PATH_SRC = join(__dirname, "../");
     const PATH_DIST = join(PATH_SRC, "dist", target);
-    const IS_SERVER = target === 'server';
-    const IS_CLIENT = target === 'client';
+    const IS_SERVER = process.env.BUILD_TYPE === "server";
+    const IS_CLIENT = process.env.BUILD_TYPE === "client";
 
     return {
         name: target,
@@ -31,14 +31,6 @@ const createConfig = ({ target }) => {
                 }
             ]
         },
-
-        plugins: [
-            new webpack.DefinePlugin({
-                IS_CLIENT: JSON.stringify(IS_CLIENT),
-                IS_SERVER: JSON.stringify(IS_SERVER),
-                'typeof window': JSON.stringify(IS_CLIENT ? 'object' : 'undefined')
-            }),
-        ],
     }
 }
 

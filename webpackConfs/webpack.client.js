@@ -25,8 +25,6 @@ module.exports = {
     },
 
     plugins: [
-        ...config.plugins,
-
         new MiniCssExtractPlugin({
             filename: 'main.css',
         }),
