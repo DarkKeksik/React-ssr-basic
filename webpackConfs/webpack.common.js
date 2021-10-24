@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const { resolve } = require('path');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const createConfig = () => {
     const BUILD_TARGET = process.env.BUILD_TARGET;
@@ -34,6 +35,9 @@ const createConfig = () => {
                 }
             ]
         },
+        plugins: [
+            new CleanWebpackPlugin()
+        ]
     }
 }
 

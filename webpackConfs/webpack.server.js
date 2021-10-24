@@ -3,6 +3,11 @@ const config = require('./webpack.common').createConfig();
 module.exports = {
     ...config,
 
+    output: {
+        ...config.output,
+        filename: "main.js"
+    },
+
     module: {
         ...config.module,
 
@@ -15,6 +20,10 @@ module.exports = {
             }
         ]
     },
+
+    plugins: [
+        ...config.plugins
+    ],
 
     externals: {
         'express': 'commonjs express',
